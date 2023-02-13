@@ -14,7 +14,12 @@ FROM nginx:alpine
 #将打包后的文件夹挪到nginx
 
 COPY  --from=build-stage /app/dist /usr/share/nginx/html
-
 #COPY --from=build-stage /app/nginx.conf /etc/nginx/nginx.conf
+
+
+ARG envType=default_value
+ARG envType
+RUN echo "${envType}"
+
 
 EXPOSE 80
